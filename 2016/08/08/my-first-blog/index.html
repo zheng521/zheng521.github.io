@@ -64,7 +64,7 @@ JavaScript：
 
 JavaScript：
     数据类型、运算、对象、Function、继承、闭包、作用域、">
-<meta property="og:updated_time" content="2016-08-15T14:36:57.000Z">
+<meta property="og:updated_time" content="2016-11-14T02:34:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端面试总结">
 <meta name="twitter:description" content="前端面试总结本文由本人搜集和整理了一些前端面试题，大部分都是从网上搜集整理而来，如有侵权，敬请告之
@@ -142,7 +142,7 @@ JavaScript：
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            首页
+            Home
           </a>
         </li>
       
@@ -152,7 +152,7 @@ JavaScript：
             
               <i class="menu-item-icon fa fa-categories fa-fw"></i> <br />
             
-            分类
+            Categories
           </a>
         </li>
       
@@ -162,7 +162,7 @@ JavaScript：
             
               <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
-            标签
+            Tags
           </a>
         </li>
       
@@ -172,7 +172,7 @@ JavaScript：
             
               <i class="menu-item-icon fa fa-archives fa-fw"></i> <br />
             
-            时光轴
+            Archives
           </a>
         </li>
       
@@ -182,7 +182,7 @@ JavaScript：
             
               <i class="menu-item-icon fa fa-about fa-fw"></i> <br />
             
-            关于
+            About
           </a>
         </li>
       
@@ -232,15 +232,15 @@ JavaScript：
 
         <div class="post-meta">
           <span class="post-time">
-            zheng
+            Posted on
             <time itemprop="dateCreated" datetime="2016-08-08T20:03:47+08:00" content="2016-08-08">
               2016-08-08
             </time>
           </span>
           <span class="post-time">
             | 修改于
-            <time itemprop="dateCreated" datetime="2016-08-15T22:36:57+08:00" content="2016-08-15">
-              2016-08-15
+            <time itemprop="dateCreated" datetime="2016-11-14T10:34:16+08:00" content="2016-11-14">
+              2016-11-14
             </time>
           </span>
 
@@ -494,7 +494,9 @@ inherit
 增加了旋转,缩放,定位,倾斜,动画，多背景
 transform:\scale(0.85,0.90)\ translate(0px,-30px)\ skew(-9deg,0deg)\Animation:
 </code></pre><p>请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？</p>
-<pre><code>？
+<pre><code>Flex是Flexible Box的缩写，意为&quot;弹性布局&quot;，用来为盒状模型提供最大的灵活性。s
+Flexbox可以把列表放在同一个方向（从左到右或从上到下排列），并且让这些列表能延伸到占用可用的空间。较为复杂的布局可以通过嵌套一个伸缩容器（flex container）来辅助实现。
+Flexbox可以简单快速的创建一个具有弹性功能的布局，当在一个小屏幕上显示的时候，Flexbox可以让元素在容器（伸缩容器）中进行自由扩展和收缩，从而容易调整整个布局。它的目的是使用常见的布局模式，比如说三列布局，可以非常简单的实现。
 </code></pre><p>用纯CSS创建一个三角形的原理是什么？</p>
 <pre><code>把上、左、右三条边隐藏掉（颜色设为 transparent）
 #demo {
@@ -582,7 +584,9 @@ table { border-collapse:collapse; border-spacing:0; }
 2. absolute: 向上找最近的定位为absolute/relative的元素
 3. fixed: 它的containing block一律为根元素(html/body)，根元素也是initial containing block
 </code></pre><p>CSS里的visibility属性有个collapse属性值是干嘛用的？在不同浏览器下以后什么区别？</p>
-<pre><code>？
+<pre><code>当一个元素的visibility属性被设置成collapse值后，对于一般的元素，它的表现跟hidden是一样的。但例外的是，如果这个元素是table相关的元素，例如table行，table group，table列，table column group，它的表现却跟display: none一样，也就是说，它们占用的空间也会释放。
+在谷歌浏览器里，使用collapse值和使用hidden值没有什么区别。
+在火狐浏览器、Opera和IE11里，使用collapse值的效果就如它的字面意思：table的行会消失，它的下面一行会补充它的位置。
 </code></pre><p>position跟display、margin collapse、overflow、float这些特性相互叠加后会怎么样？</p>
 <pre><code>？
 </code></pre><p>对BFC规范(块级格式化上下文：block formatting context)的理解？</p>
@@ -612,7 +616,19 @@ div{
 
 如果权重相同，则最后定义的样式会起作用，但是应该避免这种情况出现
 </code></pre><p>请解释一下为什么会出现浮动和什么时候需要清除浮动？清除浮动的方式</p>
-<pre><code>？
+<pre><code>浮动的框可以左右移动，直至它的外边缘遇到包含框或者另一个浮动框的边缘。浮动框不属于文档中的普通流，当一个元素浮动之后，不会影响到 块级框的布局而只会影响内联框（通常是文本）的排列，文档中的普通流就会表现得和浮动框不存在一样，当浮动框高度超出包含框的时候，也就会出现包含框不会自动伸高来闭合浮动元素（“高度塌陷”现象）。顾名思义，就是漂浮于普通流之上，像浮云一样，但是只能左右浮动。
+正是因为浮动的这种特性，导致本属于普通流中的元素浮动之后，包含框内部由于不存在其他普通流元素了，也就表现出高度为0（高度塌陷）。在实际布局中，往往这并不是我们所希望的，所以需要闭合浮动元素，使其包含框表现出正常的高度。 
+1 添加额外标签 
+通过在浮动元素末尾添加一个空的标签例如 &lt;div style=”clear:both”&gt;&lt;/div&gt;，其他标签br等亦可
+2 使用 br标签和其自身的 html属性 
+br 有 clear=“all | left | right | none” 属性 
+3 父元素设置 overflow：hidden 
+通过设置父元素overflow值设置为hidden；在IE6中还需要触发 hasLayout ，例如 zoom：1； 
+4 父元素设置 overflow：auto 属性 
+同样IE6需要触发hasLayout
+5 父元素也设置浮动 
+6 父元素设置display:table 
+7 使用:after 伪元素 
 </code></pre><p>移动端的布局用过媒体查询吗？</p>
 <pre><code>?
 </code></pre><p>使用 CSS 预处理器吗？喜欢那个?</p>
@@ -1592,10 +1608,10 @@ JS 分文件夹存放 命名以该JS功能为准的英文翻译。
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table Of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -1610,21 +1626,21 @@ JS 分文件夹存放 命名以该JS功能为准的英文翻译。
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">1</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
               <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">Kategorien</span>
+              <span class="site-state-item-name">categories</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
               <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">Tags</span>
+              <span class="site-state-item-name">tags</span>
               </a>
           </div>
 
@@ -1676,7 +1692,7 @@ JS 分文件夹存放 命名以该JS功能为准的英文翻译。
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
@@ -1684,14 +1700,11 @@ JS 分文件夹存放 命名以该JS功能为准的英文翻译。
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+  不要让你的能力配不上你的野心
 </div>
 
 <div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
+  不要让你的才华配不上你的理想
 </div>
 
 
