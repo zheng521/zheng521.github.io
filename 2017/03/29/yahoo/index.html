@@ -50,7 +50,7 @@
 译文：雅虎前端优化35条规则翻译
 译者：@creeperyang
 如何让web页面更快，雅虎团队实践总结了7类35条规则，下面一一列出。
-1. Content1.1 Make Fewer HTTP RequestsMinimize HTTP Requests减少/最小化 http 请求数。到终端用户的">
+1. Content1.1 Make Fewer HTTP RequestsMinimize HTTP Requests减少/最小化 http 请求数。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="雅虎前端优化35条规则翻译">
 <meta property="og:url" content="https://github.com/zheng521/zheng521.github.io.git/2017/03/29/yahoo/index.html">
@@ -59,15 +59,15 @@
 译文：雅虎前端优化35条规则翻译
 译者：@creeperyang
 如何让web页面更快，雅虎团队实践总结了7类35条规则，下面一一列出。
-1. Content1.1 Make Fewer HTTP RequestsMinimize HTTP Requests减少/最小化 http 请求数。到终端用户的">
-<meta property="og:updated_time" content="2017-03-20T06:40:35.000Z">
+1. Content1.1 Make Fewer HTTP RequestsMinimize HTTP Requests减少/最小化 http 请求数。">
+<meta property="og:updated_time" content="2017-03-20T08:54:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="雅虎前端优化35条规则翻译">
 <meta name="twitter:description" content="原文： Best Practices for Speeding Up Your Web Site
 译文：雅虎前端优化35条规则翻译
 译者：@creeperyang
 如何让web页面更快，雅虎团队实践总结了7类35条规则，下面一一列出。
-1. Content1.1 Make Fewer HTTP RequestsMinimize HTTP Requests减少/最小化 http 请求数。到终端用户的">
+1. Content1.1 Make Fewer HTTP RequestsMinimize HTTP Requests减少/最小化 http 请求数。">
 
 
 
@@ -82,7 +82,7 @@
   <title> 雅虎前端优化35条规则翻译 | 初见 </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   <!--[if lte IE 8]>
   <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
@@ -166,7 +166,7 @@
             
               <i class="menu-item-icon fa fa-archives fa-fw"></i> <br />
             
-            时光轴
+            时间轴
           </a>
         </li>
       
@@ -176,7 +176,7 @@
             
               <i class="menu-item-icon fa fa-about fa-fw"></i> <br />
             
-            关于
+            关于我
           </a>
         </li>
       
@@ -207,7 +207,7 @@
   
   
 
-  <article class="post post-type-前端优化 " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-ft-opt " itemscope itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -226,14 +226,14 @@
 
         <div class="post-meta">
           <span class="post-time">
-            zheng
+            发表于
             <time itemprop="dateCreated" datetime="2017-03-29T00:00:00+08:00" content="2017-03-29">
               2017-03-29
             </time>
           </span>
           <span class="post-time">
             | 修改于
-            <time itemprop="dateCreated" datetime="2017-03-20T14:40:35+08:00" content="2017-03-20">
+            <time itemprop="dateCreated" datetime="2017-03-20T16:54:41+08:00" content="2017-03-20">
               2017-03-20
             </time>
           </span>
@@ -261,7 +261,8 @@
 <p>译文：<a href="https://github.com/creeperyang/blog/issues/1">雅虎前端优化35条规则翻译</a></p>
 <p>译者：@creeperyang</p>
 <p>如何让web页面更快，雅虎团队实践总结了7类35条规则，下面一一列出。</p>
-<h2 id="1-Content"><a href="#1-Content" class="headerlink" title="1. Content"></a>1. Content</h2><h4 id="1-1-Make-Fewer-HTTP-Requests"><a href="#1-1-Make-Fewer-HTTP-Requests" class="headerlink" title="1.1 Make Fewer HTTP Requests"></a>1.1 Make Fewer HTTP Requests</h4><h5 id="Minimize-HTTP-Requests减少-最小化-http-请求数。"><a href="#Minimize-HTTP-Requests减少-最小化-http-请求数。" class="headerlink" title="Minimize HTTP Requests减少/最小化 http 请求数。"></a>Minimize HTTP Requests减少/最小化 http 请求数。</h5><p>到终端用户的响应时间80%花在前端：大部分用于下载组件（js/css/image/flash等等）。减少组件数就是减少渲染页面所需的http请求数。这是更快页面的关键。</p>
+<h2 id="1-Content"><a href="#1-Content" class="headerlink" title="1. Content"></a>1. Content</h2><h4 id="1-1-Make-Fewer-HTTP-Requests"><a href="#1-1-Make-Fewer-HTTP-Requests" class="headerlink" title="1.1 Make Fewer HTTP Requests"></a>1.1 Make Fewer HTTP Requests</h4><h5 id="Minimize-HTTP-Requests减少-最小化-http-请求数。"><a href="#Minimize-HTTP-Requests减少-最小化-http-请求数。" class="headerlink" title="Minimize HTTP Requests减少/最小化 http 请求数。"></a>Minimize HTTP Requests减少/最小化 http 请求数。</h5><a id="more"></a>
+<p>到终端用户的响应时间80%花在前端：大部分用于下载组件（js/css/image/flash等等）。减少组件数就是减少渲染页面所需的http请求数。这是更快页面的关键。</p>
 <p>减少组件数的一个方法就是简化页面设计。保持富内容的页面且能减少http请求，有以下几个技术：</p>
 <ul>
 <li>Combined files。合并文件，如合并js，合并css都能减少请求数。如果页面间脚本和样式差异很大，合并会更具挑战性。</li>
@@ -414,7 +415,7 @@ HTTP/1.1 304 Not Modified
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/08/my-first-blog/" rel="next" title="前端面试总结">
+              <a href="/2016/08/08/interview/" rel="next" title="前端面试总结">
                 <i class="fa fa-chevron-left"></i> 前端面试总结
               </a>
             
@@ -471,10 +472,10 @@ HTTP/1.1 304 Not Modified
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            站点概览
           </li>
         </ul>
       
@@ -489,21 +490,21 @@ HTTP/1.1 304 Not Modified
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
               <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">Kategorien</span>
+              <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
               <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">Tags</span>
+              <span class="site-state-item-name">标签</span>
               </a>
           </div>
 
