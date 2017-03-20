@@ -60,7 +60,7 @@
 译者：@creeperyang
 如何让web页面更快，雅虎团队实践总结了7类35条规则，下面一一列出。
 1. Content1.1 Make Fewer HTTP RequestsMinimize HTTP Requests减少/最小化 http 请求数。到终端用户的">
-<meta property="og:updated_time" content="2017-03-20T06:32:27.000Z">
+<meta property="og:updated_time" content="2017-03-20T06:40:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="雅虎前端优化35条规则翻译">
 <meta name="twitter:description" content="原文： Best Practices for Speeding Up Your Web Site
@@ -233,7 +233,7 @@
           </span>
           <span class="post-time">
             | 修改于
-            <time itemprop="dateCreated" datetime="2017-03-20T14:32:27+08:00" content="2017-03-20">
+            <time itemprop="dateCreated" datetime="2017-03-20T14:40:35+08:00" content="2017-03-20">
               2017-03-20
             </time>
           </span>
@@ -304,13 +304,13 @@ Content-Type: text/html
 <p>如果你的页面dom元素很多，那么意味着你可能需要删除无用的内容和标签来优化。</p>
 <h4 id="1-8-Split-Components-Across-Domains"><a href="#1-8-Split-Components-Across-Domains" class="headerlink" title="1.8 Split Components Across Domains"></a>1.8 Split Components Across Domains</h4><h5 id="把组件分散到不同的域名。"><a href="#把组件分散到不同的域名。" class="headerlink" title="把组件分散到不同的域名。"></a>把组件分散到不同的域名。</h5><p>把组件分散到不同的域名允许你最大化并行下载数。由于DNS查询的副作用，最佳的不同域名数是2-4。</p>
 <h4 id="1-9-Minimize-the-Number-of-iframes"><a href="#1-9-Minimize-the-Number-of-iframes" class="headerlink" title="1.9 Minimize the Number of iframes"></a>1.9 Minimize the Number of iframes</h4><h5 id="最小化iframe的数量。"><a href="#最小化iframe的数量。" class="headerlink" title="最小化iframe的数量。"></a>最小化iframe的数量。</h5><p>iframe允许html文档被插入到父文档。</p>
-<p>\<iframe>优点：</iframe></p>
+<p>&lt; iframe&gt;优点：</p>
 <ul>
 <li>帮助解决缓慢的第三方内容的加载，如广告和徽章</li>
 <li>安全沙盒</li>
 <li>并行下载脚本</li>
 </ul>
-<p>\<iframe>缺点：</iframe></p>
+<p>&lt; iframe&gt;缺点：</p>
 <ul>
 <li>即使空的也消耗（资源和时间）</li>
 <li>阻塞了页面的onload</li>
