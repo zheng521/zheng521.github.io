@@ -26,7 +26,7 @@
 <meta property="og:description" content="new 实现  创建一个新对象 将新对象的原型属性指向构造函数的原型对象 将构造函数的作用域赋给新对象（因此this就指向了这个新对象） 执行构造函数中的代码（为这个新对象添加属性） 返回新对象 (判断新对象是否为对象)    &#96;&#96; function myNew(Func) &amp;#123;   let obj &#x3D; &amp;#123;&amp;#125;   obj._prop_ &#x3D; Func.pr">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-01T04:33:14.000Z">
-<meta property="article:modified_time" content="2023-04-01T08:15:26.567Z">
+<meta property="article:modified_time" content="2023-04-02T03:35:53.057Z">
 <meta property="article:author" content="zheng">
 <meta property="article:tag" content="interview">
 <meta name="twitter:card" content="summary">
@@ -216,7 +216,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/" rel="tag">interview</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/" rel="tag">interview</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -235,7 +235,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -247,6 +247,21 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/04/02/%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91%E4%BB%A3%E7%A0%81/" class="title">面试高频代码</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-04-02T03:43:23.000Z" itemprop="datePublished">2023-04-02</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -656,6 +671,61 @@ function myReduce(func, initVal) &#123;
     &#125;)
   &#125;
 </code></pre>
+<h3 id="JSON-stringify-实现"><a href="#JSON-stringify-实现" class="headerlink" title="JSON.stringify 实现"></a>JSON.stringify 实现</h3><hr>
+<pre><code>function jsonStringify(data) &#123;
+  let type = typeof data;
+  if(type !== &#39;object&#39;) &#123;
+    let result = data;
+    //data 可能是基础数据类型的情况在这里处理
+    if (Number.isNaN(data) || data === Infinity) &#123;
+      //NaN 和 Infinity 序列化返回 &quot;null&quot;
+      result = &quot;null&quot;;
+    &#125; else if (type === &#39;function&#39; || type === &#39;undefined&#39; || type === &#39;symbol&#39;) &#123;
+      // 由于 function 序列化返回 undefined，因此和 undefined、symbol 一起处理
+      return undefined;
+    &#125; else if (type === &#39;string&#39;) &#123;
+      result = &#39;&quot;&#39; + data + &#39;&quot;&#39;;
+    &#125;
+    return String(result);
+  &#125; else if (type === &#39;object&#39;) &#123;
+    if (data === null) &#123;
+        return &quot;null&quot;  // 第01讲有讲过 typeof null 为&#39;object&#39;的特殊情况
+    &#125; else if (data.toJSON &amp;&amp; typeof data.toJSON === &#39;function&#39;) &#123;
+        return jsonStringify(data.toJSON());
+    &#125; else if (data instanceof Array) &#123;
+        let result = [];
+        //如果是数组，那么数组里面的每一项类型又有可能是多样的
+        data.forEach((item, index) =&gt; &#123;
+        if (typeof item === &#39;undefined&#39; || typeof item === &#39;function&#39; || typeof item === &#39;symbol&#39;) &#123;
+              result[index] = &quot;null&quot;;
+          &#125; else &#123;
+              result[index] = jsonStringify(item);
+          &#125;
+        &#125;);
+        result = &quot;[&quot; + result + &quot;]&quot;;
+        return result.replace(/&#39;/g, &#39;&quot;&#39;);
+      &#125; else &#123;
+        // 处理普通对象
+        let result = [];
+        Object.keys(data).forEach((item, index) =&gt; &#123;
+            if (typeof item !== &#39;symbol&#39;) &#123;
+              //key 如果是 symbol 对象，忽略
+              if (data[item] !== undefined &amp;&amp; typeof data[item] !== &#39;function&#39; &amp;&amp; typeof data[item] !== &#39;symbol&#39;) &#123;
+                //键值如果是 undefined、function、symbol 为属性值，忽略
+                result.push(&#39;&quot;&#39; + item + &#39;&quot;&#39; + &quot;:&quot; + jsonStringify(data[item]));
+              &#125;
+            &#125;
+        &#125;);
+        return (&quot;&#123;&quot; + result + &quot;&#125;&quot;).replace(/&#39;/g, &#39;&quot;&#39;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="JSON-parse-实现"><a href="#JSON-parse-实现" class="headerlink" title="JSON.parse 实现"></a>JSON.parse 实现</h3><hr>
+<pre><code>var json = &#39;&#123;&quot;a&quot;:&quot;1&quot;, &quot;b&quot;:2&#125;&#39;;
+// obj 就是 json 反序列化之后得到的对象
+var obj = eval(&quot;(&quot; + json + &quot;)&quot;); 
+</code></pre>
 
       
     </div>
@@ -709,12 +779,16 @@ function myReduce(func, initVal) &#123;
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
   
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2023/04/02/%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91%E4%BB%A3%E7%A0%81/" title="面试高频代码"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    
+  </ul>
   
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
-  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
-    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
-  </div> -->
   
   
   <div class="bar-right">
@@ -725,48 +799,6 @@ function myReduce(func, initVal) &#123;
   </div>
 </nav>
   
-<!-- Modal -->
-<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content donate">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <div class="modal-body">
-        <div class="donate-box">
-          <div class="donate-head">
-            <p>感谢您的支持，我会继续努力的!</p>
-          </div>
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
-              <div class="donate-payimg">
-                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
-              </div>
-              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
-              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
-              <div class="donate-payimg">
-                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
-              </div>
-              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
-              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
-            </div>
-          </div>
-          <div class="donate-footer">
-            <ul class="nav nav-tabs nav-justified" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
-              </li>
-              <li role="presentation" class="">
-                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 
 
 </main>

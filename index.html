@@ -211,7 +211,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/" rel="tag">interview</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/" rel="tag">interview</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -230,7 +230,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -242,6 +242,21 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/04/02/%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91%E4%BB%A3%E7%A0%81/" class="title">面试高频代码</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-04-02T03:43:23.000Z" itemprop="datePublished">2023-04-02</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -269,431 +284,73 @@
   
   <main class="main" role="main">
   
-  
-    <div class="content">
-  <article id="post-必会手写代码" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="content article-list">
     
-    <div class="article-header">
-      
-        
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/01/%E5%BF%85%E4%BC%9A%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/">必会手写代码(js基础)</a>
+      <a class="article-title" href="/2023/04/02/%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91%E4%BB%A3%E7%A0%81/">面试高频代码</a>
     </h1>
   
 
-      
-      <div class="article-meta">
-        <span class="article-date">
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2023/04/01/%E5%BF%85%E4%BC%9A%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" class="article-date">
-	  <time datetime="2023-04-01T04:33:14.000Z" itemprop="datePublished">2023-04-01</time>
+	<a href="/2023/04/02/%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91%E4%BB%A3%E7%A0%81/" class="article-date">
+	  <time datetime="2023-04-02T03:43:23.000Z" itemprop="datePublished">4月 2</time>
 	</a>
 </span>
-        
-        
+    
+    
   <span class="article-tag">
     <i class="icon icon-tags"></i>
 	<a class="article-tag-link-link" href="/tags/interview/" rel="tag">interview</a>
   </span>
 
 
-        
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/04/02/%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91%E4%BB%A3%E7%A0%81/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/04/01/%E5%BF%85%E4%BC%9A%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/#comments" class="article-comment-link">评论</a></span>
-        
-      </div>
-    </div>
-    <div class="article-entry marked-body" itemprop="articleBody">
-      
-        <h3 id="new-实现"><a href="#new-实现" class="headerlink" title="new 实现"></a>new 实现</h3><hr>
-<ol>
-<li>创建一个新对象</li>
-<li>将新对象的原型属性指向构造函数的原型对象</li>
-<li>将构造函数的作用域赋给新对象（因此this就指向了这个新对象）</li>
-<li>执行构造函数中的代码（为这个新对象添加属性）</li>
-<li>返回新对象 (判断新对象是否为对象)</li>
-</ol>
-<p>  &#96;&#96;</p>
-<pre><code>function myNew(Func) &#123;
-  let obj = &#123;&#125;
-  obj._prop_ = Func.prototype 
-  let result = Func.apply(obj, arguments)
-  return  result instanceof Object ? result : obj
-&#125;
-</code></pre>
-<h3 id="instaceof-实现"><a href="#instaceof-实现" class="headerlink" title="instaceof 实现"></a>instaceof 实现</h3><hr>
-<pre><code>function myInstaceOf(left, right) &#123;
-  let prop = Object.getPrototypeOf(left)
-  let prototype = right.prototype
-  while (true) &#123;
-    if (prop === null) return false 
-    if (prop === prototype) &#123;
-      return true
-    &#125;
-    prop = Object.getPrototypeOf(prop)
-  &#125;
-&#125;
-</code></pre>
-<h3 id="call-实现"><a href="#call-实现" class="headerlink" title="call 实现"></a>call 实现</h3><hr>
-<pre><code>function myCall(context) &#123;
-  context = context || window 
-  context.fn = this 
-  let args = [...arguments].slice(1)
-  let result = context.fn(...args)
-  delete context.fn
-  return result
-&#125;
-</code></pre>
-<h3 id="apply实现"><a href="#apply实现" class="headerlink" title="apply实现"></a>apply实现</h3><hr>
-<pre><code>function myApply(content) &#123;
-  context = context || window 
-  context.fn = this 
-  let result 
-  if (arguments[1]) &#123;
-    result = context.fn(...arguments[1])
-  &#125; else &#123;
-    result = context.fn()
-  &#125;
-  return result
-&#125;
-</code></pre>
-<h3 id="bind实现"><a href="#bind实现" class="headerlink" title="bind实现"></a>bind实现</h3><hr>
-<pre><code>function myBind(context) &#123;
-  let self = this 
-  let args = [...arguments].slice(1)
-  return function () &#123;
-    let newArgs = [...arguments]
-    return self.apply(context, args.concat(newArgs))
-  &#125;
-&#125;
-</code></pre>
-<h3 id="currry实现"><a href="#currry实现" class="headerlink" title="currry实现"></a>currry实现</h3><hr>
-<pre><code>function curry(fn, ...args) &#123;
-  if (args.length &gt; fn.length) &#123;
-    fn(...args)
-  &#125; else &#123;
-    return (..._args) =&gt; curry(fn, ...args, ..._args)
-  &#125;
-&#125;
-</code></pre>
-<h3 id="compose实现"><a href="#compose实现" class="headerlink" title="compose实现"></a>compose实现</h3><hr>
-<pre><code>const compose = (...fns) =&gt; val =&gt; fns.reverse().reduce((acc, fn) =&gt; fn(acc), val);
-
-function compose (...fns) &#123;
-  return val =&gt; fns.reverse().reduce((acc, fn) =&gt; fn(acc), val)
-&#125;
-</code></pre>
-<h3 id="pipe实现"><a href="#pipe实现" class="headerlink" title="pipe实现"></a>pipe实现</h3><hr>
-<pre><code>const pipe = (...fns) =&gt; val =&gt; fns.reduce((acc, fn) =&gt; fn(acc), val);
-
-function compose (...fns) &#123;
-  return val =&gt; fns.reduce((acc, fn) =&gt; fn(acc), val)
-&#125;
-</code></pre>
-<h3 id="throttle"><a href="#throttle" class="headerlink" title="throttle"></a>throttle</h3><hr>
-<pre><code>function throttle(fn, delay) &#123;
-  let timer = null
-  return function (...args) &#123;
-    if (!timer) &#123;
-      timer = setTimeout(() =&gt; &#123;
-        fn.apply(this, args)
-        clearTimeout(timer)
-      &#125;, delay)
-    &#125;
-  &#125;
-&#125;
-</code></pre>
-<h3 id="debounce"><a href="#debounce" class="headerlink" title="debounce"></a>debounce</h3><hr>
-<pre><code>function debounce(fn, time) &#123;
-  let timer = null 
-  return function (...args) &#123;
-    if (timer) clearTimeout(timer)
-    timer = setTimeout(() =&gt; &#123;
-      fn.apply(this, args)
-    &#125;, time)
-  &#125;
-&#125;
-</code></pre>
-<h3 id="object-Freeze-实现"><a href="#object-Freeze-实现" class="headerlink" title="object.Freeze 实现"></a>object.Freeze 实现</h3><hr>
-<pre><code>  function myFreeze(obj) &#123;
-    if (obj instanceof Object) &#123;
-      //封闭一个对象，阻止添加新属性并将所有现有属性标记为不可配置
-      Object.seal(obj)
-      for (let p in obj) &#123;
-        if (obj.hasOwnProperty(p)) &#123;
-          Object.defineProperty(obj, p, &#123;writable: false&#125;)
-          myFreeze(obj[p])
-        &#125;
-      &#125;
-    &#125;
-  &#125;
-</code></pre>
-<h3 id="deepcopy"><a href="#deepcopy" class="headerlink" title="deepcopy"></a>deepcopy</h3><hr>
-<pre><code>  function deepCopy(target, map = new WeakMap()) &#123;
-    if (typeof(target) !== &#39;object&#39;) &#123;
-      return 
-    &#125;
-    if (map.get(target)) return map.get(target)
-    let newObj = Array.isArray(target) ? [] : &#123;&#125;
-    map.set(target, newObj)
-    for (let key in target) &#123;
-      if (targe.hasOwnProperty(key)) &#123;
-        if (typeof(key) === &#39;object&#39;) &#123;
-          newObj[key] = deepCopy(target[key])
-        &#125; else &#123;
-          newObj[key] = target[key]
-        &#125;
-      &#125;
-    &#125;
-    return newObj
-  &#125;
-</code></pre>
-<h3 id="arrayToTree-数组构建树形结构数据"><a href="#arrayToTree-数组构建树形结构数据" class="headerlink" title="arrayToTree 数组构建树形结构数据"></a>arrayToTree 数组构建树形结构数据</h3><pre><code>/**
-   * 数组转树形结构
-   * @param &#123;array&#125; list 被转换的数组
-   * @param &#123;number|string&#125; root 根节点（最外层节点）
-   * @returns array
-   */
-function arrayToTree(list, root) &#123;
-  let map = &#123;&#125;
-
-  for (let item of list) &#123;
-    map[item.parentId] = item
-  &#125;
-
-  let result = []
-  for (let item of list) &#123;
-    if (item.parentId === root) &#123;
-      result.push(map[item.id])
-    &#125; else &#123;
-      map[item.parentId].children = map[item.parentId].children ? map[item.parentId].push(map[item.id]) :
-      (map[parent_id].children = [map[id]])
-    &#125;
-  &#125;
-  return result
-&#125;
-</code></pre>
-<h3 id="flattern"><a href="#flattern" class="headerlink" title="flattern"></a>flattern</h3><hr>
-<pre><code>function myFlattern(arr) &#123;
-  return arr.reduce((prev, cur) =&gt; prev.concat(Array.isArray(cur) ? myFlattern(cur): 
-  cur),[])
-&#125;
-</code></pre>
-<h3 id="reduce-实现"><a href="#reduce-实现" class="headerlink" title="reduce 实现"></a>reduce 实现</h3><hr>
-<pre><code>//语法 array.reduce(function(prev, currentValue, currentIndex, arr), initialValue)
-function myReduce(func, initVal) &#123;
-  let arr = this 
-  let base = initVal ? initVal : arr[0]
-  let startPoint = initVal ? 1 : 0 
-  arr.slice(startPoint).forEach((val, index) =&gt; &#123;
-    let base = func(base, val, index+startPoint, arr)
-  &#125;)
-  return base
-&#125;
-</code></pre>
-<h3 id="map-实现"><a href="#map-实现" class="headerlink" title="map 实现"></a>map 实现</h3><hr>
-<pre><code>function myMap(fn, thisArg = []) &#123;
-  return this.reduce((prev, cur, index, arr) =&gt; &#123;
-    return prev.concat(fn.call(thisArg, cur, index, arr))
-  &#125;, [])
-&#125;
-</code></pre>
-<h3 id="Promise-实现"><a href="#Promise-实现" class="headerlink" title="Promise 实现"></a>Promise 实现</h3><hr>
-<pre><code>  const PENDING = &#39;pending&#39;
-  const FULFILLED = &#39;fulfilled&#39;
-  const REJECT = &#39;reject&#39;
-
-  class Promise &#123;
-    constructor () &#123;
-      this.staus = PENDING
-      this.value = &#39;&#39;
-      this.reason = &#39;&#39;
-      this.onResolvedCallBack = []
-      this.onRejectedCallBack = []
-      let resolve = (value) =&gt; &#123;
-        if (this.status === PENDING) &#123;
-          this.status = FULFILLED 
-          this.value = value
-          this.onResolvedCallBack.forEach(fn =&gt; fn())
-        &#125;
-      &#125; 
-
-      let reject = (reason) =&gt; &#123;
-        if (this.status === PENDING) &#123;
-          this.status = REJECT 
-          this.reason = reason
-          this.onRejectedCallBack.forEach(fn =&gt; fn())
-        &#125;
-      &#125;
-
-      try &#123;
-        exector(resolve, reject)
-      &#125; catch(err) &#123;
-        reject(err)
-      &#125;
-    &#125;
-    then(onFulfilled, onRejected) &#123;
-      if (this.status === FULFIllED) &#123;
-        onFulfilled(this.value)
-      &#125;
-
-      if (this.status === REJECT) &#123;
-        onRejected(this.reason)
-      &#125;
-
-      if (this.status === PENDING) &#123;
-        this.onResolvedCallBack.push(() =&gt; onFulfilled(this.value))
-        this.onRejectedCallBack.push(() =&gt; onRejected(this.reason))
-      &#125;
-    &#125;
-  &#125;
-
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
   
-</code></pre>
-<h3 id="promiseAll"><a href="#promiseAll" class="headerlink" title="promiseAll"></a>promiseAll</h3><hr>
-<pre><code>function promiseAll(promises) &#123;
-  return new Promise((resolve, reject) =&gt; &#123;
-    let result = []
-    let count = 0 
-    promises.forEach((promise, index) =&gt; &#123;
-      promise.then(res =&gt; &#123;
-        result.push(res)
-        count++
-        if (count === promises.length) &#123;
-          resolve(result)
-        &#125;
-      &#125;, err =&gt; reject(err))
-    &#125;)
-  &#125;)
-&#125;
-</code></pre>
-<h3 id="promiseFinally"><a href="#promiseFinally" class="headerlink" title="promiseFinally"></a>promiseFinally</h3><hr>
-<pre><code>function promiseFinally(cb) &#123;
-  return this.then(value =&gt; &#123;
-    return Promise.resolve(cb()).then(() =&gt; value)
-  &#125;, err =&gt; &#123;
-    return Promise.resolve(cb()).then(() =&gt; err)
-  &#125;)
-&#125;
-</code></pre>
-<h3 id="promiseAllSetted"><a href="#promiseAllSetted" class="headerlink" title="promiseAllSetted"></a>promiseAllSetted</h3><hr>
-<pre><code>function promiseAllSetted(promises) &#123;
-  _promises = promises.map(item =&gt; item instanceof Promise ? item : Promise.resolve(item))
-  return new Promise((resolve, reject) =&gt; &#123;
-    let result = []
-    let unSettedCount = _promise.length
-    _promises.forEach((promise, index) =&gt; &#123;
-      promise.then(res =&gt; &#123;
-        result[index] = &#123;
-          status: &#39;fulfilled&#39;, 
-          res
-        &#125;
-        unSettedCount--
-        unSettedCount === 0 &amp;&amp; resolve(result)
-      &#125;, err =&gt; &#123;
-        result[index] = &#123;
-          status: &#39;reject&#39;, 
-          err
-        &#125;
-        unSettedCount--
-        unSettedCount === 0 &amp;&amp; reject(result)
-      &#125;)
-    &#125;)
-  &#125;)
-&#125;
-</code></pre>
-<h3 id="promiseRace"><a href="#promiseRace" class="headerlink" title="promiseRace"></a>promiseRace</h3><hr>
-<pre><code>function promiseRace(promises) &#123;
-  return new Promise((resolve, reject) =&gt; &#123;
-    promises.forEach(promise =&gt; &#123;
-      promise.then(res =&gt; resolve(res), err =&gt; reject(err))
-    &#125;)
-  &#125;)
-&#125;
-</code></pre>
-<h3 id="promiseAny"><a href="#promiseAny" class="headerlink" title="promiseAny"></a>promiseAny</h3><hr>
-<pre><code>function promiseAny(promises) &#123;
-  return new Promise((resolve, reject) =&gt; &#123;
-    let count = 0 
-    promises.forEach(promise =&gt; &#123;
-      promise.then(res =&gt; &#123;
-        resolve(res)
-      &#125;, err =&gt; &#123;
-        count++ 
-        count === promises.length &amp;&amp; reject(err)
-      &#125;)
-    &#125;)
-  &#125;)
-&#125;
-</code></pre>
-<h3 id="async-x2F-await-自动执行器"><a href="#async-x2F-await-自动执行器" class="headerlink" title="async&#x2F;await  自动执行器"></a>async&#x2F;await  自动执行器</h3><hr>
-<pre><code>  function runGenerator(gen) &#123;
-    return new Promise((resolve, reject) =&gt; &#123;
-      let g = gen()
-      function _next() &#123;
-        let res
-        try &#123;
-          res = g.next(val)
-        &#125; catch(err) &#123;
-          return reject(err)
-        &#125;
-        if (res.done) &#123;
-          return resolve(res.value)
-        &#125;
-        //res.value包装为promise，以兼容yield后面跟基本类型的情况
-        Promise.resolve(res.value).then(val =&gt; &#123;
-          _next(val)
-        &#125;, err =&gt; &#123;
-          g.throw(err)
-        &#125;)
-      &#125;
-      _next()
-    &#125;)
-  &#125;
-</code></pre>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/01/%E5%BF%85%E4%BC%9A%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/">必会手写代码(js基础)</a>
+    </h1>
+  
 
-      
-    </div>
-    <div class="article-footer">
-      <blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
-    
-    <li class="post-copyright-link hidden-xs">
-      <strong>本文链接：</strong>
-      <a href="https://github.com/zheng521/2023/04/01/%E5%BF%85%E4%BC%9A%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" title="必会手写代码(js基础)" target="_blank" rel="external">https://github.com/zheng521/2023/04/01/必会手写代码/</a>
-    </li>
-    
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</blockquote>
-
-
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="https://github.com/zheng521" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
-        </a>
-      </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/zheng521" target="_blank"><span class="text-dark">lele</span><small class="ml-1x">Frontend Developer</small></a></h3>
-        <div>do what you think is right</div>
-      </div>
-    </figure>
   </div>
-</div>
-
-
-    </div>
-  </article>
   
-</div>
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/04/01/%E5%BF%85%E4%BC%9A%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" class="article-date">
+	  <time datetime="2023-04-01T04:33:14.000Z" itemprop="datePublished">4月 1</time>
+	</a>
+</span>
+    
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/interview/" rel="tag">interview</a>
+  </span>
 
-  
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/04/01/%E5%BF%85%E4%BC%9A%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
+</article>
+
+    
+  </div>
 
    
 </main>
