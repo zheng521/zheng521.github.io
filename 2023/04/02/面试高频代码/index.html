@@ -26,7 +26,7 @@
 <meta property="og:description" content="遍历节点生成虚拟Dom 123456789101112131415161718192021222324252627282930313233class Vnode &amp;#123;  constructor(tag, data, value, type) &amp;#123;    this.tag &#x3D; tag  &amp;&amp; tag.toLowerCass()    this.data &#x3D; data">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-02T03:43:23.000Z">
-<meta property="article:modified_time" content="2023-04-04T13:40:49.523Z">
+<meta property="article:modified_time" content="2023-04-07T05:43:44.667Z">
 <meta property="article:author" content="zheng">
 <meta property="article:tag" content="interview">
 <meta name="twitter:card" content="summary">
@@ -235,7 +235,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -247,6 +247,51 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/07/09/%E9%87%8D%E8%BD%BD/" class="title">重载</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-07-09T06:30:00.000Z" itemprop="datePublished">2023-07-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/04/05/react%E5%9F%BA%E7%A1%80/" class="title">react基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-04-05T02:42:06.000Z" itemprop="datePublished">2023-04-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/04/05/vue%E5%9F%BA%E7%A1%80/" class="title">vue基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-04-05T02:41:49.000Z" itemprop="datePublished">2023-04-05</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -273,36 +318,6 @@
               </p>
               <p class="item-date">
                 <time datetime="2023-04-04T13:49:17.000Z" itemprop="datePublished">2023-04-04</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                
-              </p>
-              <p class="item-title">
-                <a href="/2023/04/02/%E9%9D%A2%E8%AF%95%E9%AB%98%E9%A2%91%E4%BB%A3%E7%A0%81/" class="title">面试高频代码</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2023-04-02T03:43:23.000Z" itemprop="datePublished">2023-04-02</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                
-              </p>
-              <p class="item-title">
-                <a href="/2023/04/01/%E5%BF%85%E4%BC%9A%E6%89%8B%E5%86%99%E4%BB%A3%E7%A0%81/" class="title">必会手写代码(js基础)</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2023-04-01T04:33:14.000Z" itemprop="datePublished">2023-04-01</time>
               </p>
             </div>
           </li>
@@ -362,7 +377,7 @@
 <h3 id="千分位格式话"><a href="#千分位格式话" class="headerlink" title="千分位格式话"></a>千分位格式话</h3><hr>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">format</span>(<span class="params">n</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> str = n.<span class="title function_">toString</span>()</span><br><span class="line">  <span class="keyword">let</span> arr = str.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>()</span><br><span class="line">  <span class="keyword">return</span> arr.<span class="title function_">reduce</span>(<span class="function">(<span class="params">prev, cur, index</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index % <span class="number">3</span> === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (prev) &#123;</span><br><span class="line">        <span class="keyword">return</span> cur + <span class="string">&#x27;,&#x27;</span> + prev</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> cur</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> cur + prev</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Lazy-man"><a href="#Lazy-man" class="headerlink" title="Lazy man"></a>Lazy man</h3><hr>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LazyMan</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span> (name) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tasks</span> = []</span><br><span class="line">  &#125;</span><br><span class="line">  eat (foodName) &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> 吃了 <span class="subst">$&#123;foodName&#125;</span>`</span>)</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">next</span>()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tasks</span>.<span class="title function_">push</span>(fn)</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span></span><br><span class="line">  &#125;</span><br><span class="line">  sleep (time) &#123;</span><br><span class="line">    <span class="keyword">const</span> fn = () &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> 睡了<span class="subst">$&#123;time&#125;</span>长时间`</span>)</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">next</span>()</span><br><span class="line">      &#125;, time * <span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tasks</span>.<span class="title function_">push</span>(fn)</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span></span><br><span class="line">  &#125;</span><br><span class="line">  next () &#123;</span><br><span class="line">    <span class="keyword">let</span> fn = <span class="variable language_">this</span>.<span class="property">tasks</span>.<span class="property">length</span> &amp;&amp; <span class="variable language_">this</span>.<span class="property">tasks</span>.<span class="title function_">shift</span>()</span><br><span class="line">    <span class="title function_">fn</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LazyMan</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span> (name) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tasks</span> = []</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">next</span>()</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  eat (foodName) &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> 吃了 <span class="subst">$&#123;foodName&#125;</span>`</span>)</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">next</span>()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tasks</span>.<span class="title function_">push</span>(fn)</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span></span><br><span class="line">  &#125;</span><br><span class="line">  sleep (time) &#123;</span><br><span class="line">    <span class="keyword">const</span> fn = () &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> 睡了<span class="subst">$&#123;time&#125;</span>长时间`</span>)</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">next</span>()</span><br><span class="line">      &#125;, time * <span class="number">1000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tasks</span>.<span class="title function_">push</span>(fn)</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span></span><br><span class="line">  &#125;</span><br><span class="line">  next () &#123;</span><br><span class="line">    <span class="keyword">let</span> fn = <span class="variable language_">this</span>.<span class="property">tasks</span>.<span class="property">length</span> &amp;&amp; <span class="variable language_">this</span>.<span class="property">tasks</span>.<span class="title function_">shift</span>()</span><br><span class="line">    <span class="title function_">fn</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="arrayToTree-数组构建树形结构数据"><a href="#arrayToTree-数组构建树形结构数据" class="headerlink" title="arrayToTree 数组构建树形结构数据"></a>arrayToTree 数组构建树形结构数据</h3><hr>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 数组转树形结构</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> &#123;<span class="type">array</span>&#125; list 被转换的数组</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> &#123;<span class="type">number|string</span>&#125; root 根节点（最外层节点）</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@returns</span> <span class="variable">array</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">arrayToTree</span>(<span class="params">list, root</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> map = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> list) &#123;</span><br><span class="line">    map[item.<span class="property">parentId</span>] = item</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> result = []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> list) &#123;</span><br><span class="line">    <span class="keyword">if</span> (item.<span class="property">parentId</span> === root) &#123;</span><br><span class="line">      result.<span class="title function_">push</span>(map[item.<span class="property">id</span>])</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      map[item.<span class="property">parentId</span>].<span class="property">children</span> = map[item.<span class="property">parentId</span>].<span class="property">children</span> ? map[item.<span class="property">parentId</span>].<span class="title function_">push</span>(map[item.<span class="property">id</span>]) :</span><br><span class="line">      (map[parent_id].<span class="property">children</span> = [map[id]])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

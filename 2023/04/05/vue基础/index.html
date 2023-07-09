@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>vue基础 | 初见</title>
+  <meta name="description" content="vue 生命周期 beforeCreate初始化一个空的 Vue 实例，data methods 等尚未被初始化，无法调用。 createdVue 实例初始化完成，data methods 都已初始化完成，可调用。但尚未开始渲染模板。 beforeMount编译模板，调用 render 函数生成 vdom ，但还没有开始渲染 DOM mounted渲染 DOM 完成，页面更新。组件创建完成，开始进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue基础">
+<meta property="og:url" content="https://github.com/zheng521/2023/04/05/vue%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="初见">
+<meta property="og:description" content="vue 生命周期 beforeCreate初始化一个空的 Vue 实例，data methods 等尚未被初始化，无法调用。 createdVue 实例初始化完成，data methods 都已初始化完成，可调用。但尚未开始渲染模板。 beforeMount编译模板，调用 render 函数生成 vdom ，但还没有开始渲染 DOM mounted渲染 DOM 完成，页面更新。组件创建完成，开始进">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/images/vue-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+<meta property="article:published_time" content="2023-04-05T02:41:49.000Z">
+<meta property="article:modified_time" content="2023-04-06T05:59:20.293Z">
+<meta property="article:author" content="zheng">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/images/vue-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://github.com/zheng521/2023/04/05/vue%E5%9F%BA%E7%A1%80/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="初见" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/zheng521" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">lele</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Frontend Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Iceland</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zheng521" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/interview/" rel="tag">interview</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/interview/" style="font-size: 13px;">interview</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/07/09/%E9%87%8D%E8%BD%BD/" class="title">重载</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-07-09T06:30:00.000Z" itemprop="datePublished">2023-07-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/04/05/react%E5%9F%BA%E7%A1%80/" class="title">react基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-04-05T02:42:06.000Z" itemprop="datePublished">2023-04-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/04/05/vue%E5%9F%BA%E7%A1%80/" class="title">vue基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-04-05T02:41:49.000Z" itemprop="datePublished">2023-04-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/04/04/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" class="title">前端基础</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-04-04T14:14:21.000Z" itemprop="datePublished">2023-04-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/04/04/%E8%BE%93%E5%87%BA%E4%BB%80%E4%B9%88/" class="title">输出什么</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-04-04T13:49:17.000Z" itemprop="datePublished">2023-04-04</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-vue基础" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue基础
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/04/05/vue%E5%9F%BA%E7%A1%80/" class="article-date">
+	  <time datetime="2023-04-05T02:41:49.000Z" itemprop="datePublished">2023-04-05</time>
+	</a>
+</span>
+        
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/04/05/vue%E5%9F%BA%E7%A1%80/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="vue-生命周期"><a href="#vue-生命周期" class="headerlink" title="vue 生命周期"></a>vue 生命周期</h2><p><img src="/images/vue-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png"></p>
+<h2 id="beforeCreate"><a href="#beforeCreate" class="headerlink" title="beforeCreate"></a>beforeCreate</h2><p>初始化一个空的 Vue 实例，<code>data</code> <code>methods</code> 等尚未被初始化，无法调用。</p>
+<h2 id="created"><a href="#created" class="headerlink" title="created"></a>created</h2><p>Vue 实例初始化完成，<code>data</code> <code>methods</code> 都已初始化完成，可调用。<br><br>但尚未开始渲染模板。</p>
+<h2 id="beforeMount"><a href="#beforeMount" class="headerlink" title="beforeMount"></a>beforeMount</h2><p>编译模板，调用 <code>render</code> 函数生成 vdom ，但还没有开始渲染 DOM</p>
+<h2 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h2><p>渲染 DOM 完成，页面更新。组件创建完成，开始进入运行阶段。</p>
+<h2 id="beforeUpdate"><a href="#beforeUpdate" class="headerlink" title="beforeUpdate"></a>beforeUpdate</h2><p>在数据发生改变后，DOM 被更新之前被调用。这里适合在现有 DOM 将要被更新之前访问它，比如移除手动添加的事件监听器。</p>
+<h2 id="updated"><a href="#updated" class="headerlink" title="updated"></a>updated</h2><p>在数据更改导致的虚拟 DOM 重新渲染和更新完毕之后被调用。</p>
+<p>注意，尽量不要在 <code>updated</code> 中继续修改数据，否则可能会触发死循环。</p>
+<h2 id="onActivated"><a href="#onActivated" class="headerlink" title="onActivated"></a>onActivated</h2><p>被 <code>keep-alive</code> 缓存的组件激活时调用。</p>
+<h2 id="onDeactivated"><a href="#onDeactivated" class="headerlink" title="onDeactivated"></a>onDeactivated</h2><p>被 <code>keep-alive</code> 缓存的组件停用时调用。</p>
+<h2 id="beforeUnmount"><a href="#beforeUnmount" class="headerlink" title="beforeUnmount"></a>beforeUnmount</h2><p>组件进入销毁阶段。</p>
+<p>卸载组件实例后调用，在这个阶段，实例仍然是完全正常的。<br><br>移除、解绑一些全局事件、自定义事件，可以在此时操作。</p>
+<h2 id="unmounted"><a href="#unmounted" class="headerlink" title="unmounted"></a>unmounted</h2><p>卸载组件实例后调用。调用此钩子时，组件实例的所有指令都被解除绑定，所有事件侦听器都被移除，所有子组件实例被卸载。</p>
+<hr>
+<h2 id="连环问：如何正确的操作-DOM"><a href="#连环问：如何正确的操作-DOM" class="headerlink" title="连环问：如何正确的操作 DOM"></a>连环问：如何正确的操作 DOM</h2><p><code>mounted</code> 和 <code>updated</code> 都不会保证所有子组件都挂载完成，如果想等待所有视图都渲染完成，需要使用 <code>$nextTick</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">mounted</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.$nextTick(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 仅在整个视图都被渲染之后才会运行的代码</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="连环问：ajax-放在哪个生命周期合适？"><a href="#连环问：ajax-放在哪个生命周期合适？" class="headerlink" title="连环问：ajax 放在哪个生命周期合适？"></a>连环问：ajax 放在哪个生命周期合适？</h2><p>一般有两个选择：<code>created</code> 和 <code>mounted</code> ，建议选择后者 <code>mounted</code> 。</p>
+<p>执行速度</p>
+<ul>
+<li>从理论上来说，放在 <code>created</code> 确实会快一些</li>
+<li>但 ajax 是网络请求，其时间是主要的影响因素。从 <code>created</code> 到 <code>mounted</code> 是 JS 执行，速度非常快。</li>
+<li>所以，两者在执行速度上不会有肉眼可见的差距</li>
+</ul>
+<p>代码的阅读和理解</p>
+<ul>
+<li>放在 <code>created</code> 却会带来一些沟通和理解成本，从代码的执行上来看，它会一边执行组件渲染，一边触发网络请求，并行</li>
+<li>放在 <code>mounted</code> 就是等待 DOM 渲染完成再执行网络请求，串行，好理解</li>
+</ul>
+<p>所以，综合来看，更建议选择 <code>mounted</code> 。</p>
+<h2 id="连环问：Composition-API-生命周期有何不同"><a href="#连环问：Composition-API-生命周期有何不同" class="headerlink" title="连环问：Composition API 生命周期有何不同"></a>连环问：Composition API 生命周期有何不同</h2><ul>
+<li><code>setup</code> 代替了 <code>beforeCreate</code> 和 <code>created</code></li>
+<li>生命周期换成了函数的形式，如 <code>mounted</code> -&gt; <code>onMounted</code> 参考 <a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/api/composition-api.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90">https://v3.cn.vuejs.org/api/composition-api.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90</a></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; onUpdated, onMounted &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title function_">onMounted</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;mounted&#x27;</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="title function_">onUpdated</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;updated&#x27;</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="父子生命周期流程"><a href="#父子生命周期流程" class="headerlink" title="父子生命周期流程"></a>父子生命周期流程</h2><h4 id="加载渲染过程"><a href="#加载渲染过程" class="headerlink" title="加载渲染过程"></a>加载渲染过程</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父beforeCreate-&gt;父created-&gt;父beforeMount-&gt;子beforeCreate-&gt;子created-&gt;子beforeMount-&gt;子mounted-&gt;父mounted</span><br></pre></td></tr></table></figure>
+
+<h4 id="更新过程"><a href="#更新过程" class="headerlink" title="更新过程"></a>更新过程</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父beforeUpdate-&gt;子beforeUpdate-&gt;子updated-&gt;父updated</span><br></pre></td></tr></table></figure>
+<h4 id="销毁过程"><a href="#销毁过程" class="headerlink" title="销毁过程"></a>销毁过程</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父beforeDestroy-&gt;子beforeDestroy-&gt;子destroyed-&gt;父destroyed</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Vue-优化"><a href="#Vue-优化" class="headerlink" title="Vue 优化"></a>Vue 优化</h2><ul>
+<li>v-if 和 v-show</li>
+<li>v-for 使用 key</li>
+<li>computed 缓存</li>
+<li>keep-alive</li>
+<li>异步组件</li>
+<li>路由懒加载</li>
+<li>SSR</li>
+</ul>
+<h2 id="Vue遇到的坑"><a href="#Vue遇到的坑" class="headerlink" title="Vue遇到的坑"></a>Vue遇到的坑</h2><p>全局事件、自定义事件要在组件销毁时解除绑定</p>
+<ul>
+<li>内存泄漏风险</li>
+<li>全局事件（如 <code>window.resize</code>）不解除，则会继续监听，而且组件再次创建时会重复绑定</li>
+</ul>
+<p>Vue2.x 中，无法监听 data 属性的新增和删除，以及数组的部分修改 —— Vue3 不会有这个问题</p>
+<ul>
+<li>新增 data 属性，需要用 <code>Vue.set</code></li>
+<li>删除 data 属性，需要用 <code>Vue.delete</code></li>
+<li>修改数组某一元素，不能 <code>arr[index] = value</code> ，要使用 <code>arr.splice</code> API 方式</li>
+</ul>
+<p>路由切换时，页面会 scroll 到顶部。例如，在一个新闻列表页下滑到一定位置，点击进入详情页，在返回列表页，此时会 scroll 到顶部，并重新渲染列表页。所有的 SPA 都会有这个问题，并不仅仅是 Vue 。</p>
+<ul>
+<li>在列表页缓存数据和 <code>scrollTop</code></li>
+<li>返回列表页时（用 Vue-router <a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/guide/advanced/navigation-guards.html">导航守卫</a>，判断 <code>from</code>），使用缓存数据渲染页面，然后 <code>scrollTo(scrollTop)</code></li>
+</ul>
+<hr>
+<h2 id="Vue-错误监听"><a href="#Vue-错误监听" class="headerlink" title="Vue 错误监听"></a>Vue 错误监听</h2><ul>
+<li><p>window.onerror</p>
+</li>
+<li><p>errorCaptured 生命周期</p>
+<p>会监听所有<strong>下级组件</strong>的错误。可以返回 <code>false</code> 阻止向上传播，因为可能会有多个上级节点都监听错误。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">errorCaptured</span>(<span class="params">error, instance, info</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;errorCaptured--------&#x27;</span>, error, instance, info)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>errorHandler</li>
+</ul>
+<p>全局的错误监听，所有组件的报错都会汇总到这里来。PS：如果 <code>errorCaptured</code> 返回 <code>false</code> 则<strong>不会</strong>到这里。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>(<span class="title class_">App</span>)</span><br><span class="line">app.<span class="property">config</span>.<span class="property">errorHandler</span> = <span class="function">(<span class="params">error, instance, info</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;errorHandler--------&#x27;</span>, error, instance, info)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>请注意，<code>errorHandler</code> 会阻止错误走向 <code>window.onerror</code>。</p>
+<ul>
+<li>Promise 监听报错要使用 <code>window.onunhandledrejection</code></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://github.com/zheng521/2023/04/05/vue%E5%9F%BA%E7%A1%80/" title="vue基础" target="_blank" rel="external">https://github.com/zheng521/2023/04/05/vue基础/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/zheng521" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/zheng521" target="_blank"><span class="text-dark">lele</span><small class="ml-1x">Frontend Developer</small></a></h3>
+        <div>do what you think is right</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2023/04/05/react%E5%9F%BA%E7%A1%80/" title="react基础"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2023/04/04/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" title="前端基础"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zheng521" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
